@@ -1,0 +1,65 @@
+{
+  "name": "auth-microservice",
+  "version": "1.0.0",
+  "description": "A standalone authentication and authorization microservice with JWT tokens, RBAC, and comprehensive security features",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest --coverage --verbose",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix",
+    "simulate-commits": "node simulate_commits.js"
+  },
+  "keywords": [
+    "authentication",
+    "authorization",
+    "microservice",
+    "jwt",
+    "rbac",
+    "nodejs",
+    "security",
+    "bcrypt",
+    "helmet",
+    "rate-limiting"
+  ],
+  "author": "Mani <myfamily9006@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js"
+    ],
+    "testMatch": [
+      "**/tests/**/test_*.[jt]s?(x)",
+      "**/?(*.)+(test|spec).[jt]s?(x)",
+      "**/__tests__/**/*.[jt]s?(x)"
+    ],
+    "verbose": true
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
