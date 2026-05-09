@@ -1,13 +1,24 @@
 # Known Issues
 
-The RBAC permission check tests currently have failures in the role hierarchy
-and wildcard matching paths. The core authentication flow (JWT issue, validate,
-refresh) is solid; the permission engine has cases where role inheritance and
-wildcard expansion don't match expected behavior.
+## Test environment
 
-To be addressed:
-- Permission checking with role hierarchy
-- Wildcard permission expansion (`resource:*` matching)
-- `hasAllPermissions` and `hasAnyPermission` aggregation logic
+The RBAC test suite originally relied on `server.js`'s `initialize()` flow
+to seed default roles, permissions, and users. Tests `require()` the app
+module rather than running it as `main`, so seeding never happened and
+most permission tests failed.
 
-Tracking in follow-up commits.
+**Fix applied:**
+- Added `tests/setup.js` as a Jest `globalSetup` that points `DATA_DIR` to
+  a fixed test fixture directory and seeds defaults via the model layer.
+- Added `tests/env-shim.js` as a Jest `setupFiles` shim so each worker
+  process resolves the same `DATA_DIR` regardless of pid.
+
+**Remaining work (separate from the seeding fix):**
+- Several integration tests assume rate-limit windows that aren't reset
+  between runs.
+- A few admin-route tests depend on audit log state that needs explicit
+  cleanup in `beforeEach`.
+- Async handle cleanup needs `--detectOpenHandles` work (Jest currently
+  reports it doesn't exit cleanly after the suite).
+
+These are tracked for follow-up.

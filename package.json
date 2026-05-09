@@ -56,7 +56,11 @@
       "**/?(*.)+(test|spec).[jt]s?(x)",
       "**/__tests__/**/*.[jt]s?(x)"
     ],
-    "verbose": true
+    "verbose": true,
+    "globalSetup": "./tests/setup.js",
+    "setupFiles": [
+      "./tests/env-shim.js"
+    ]
   },
   "engines": {
     "node": ">=18.0.0",
