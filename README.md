@@ -443,3 +443,43 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Express.js community for the robust web framework
 - Auth0 blog for JWT best practices
 - OWASP for security guidelines and recommendations
+
+---
+
+<!-- showcase:start -->
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Client[Client] -->|/auth/login| API[Express API]
+    API --> Validate[Input Validation]
+    Validate --> Hash[Bcrypt Hash Check]
+    Hash --> JWT[JWT Issuer]
+    JWT --> Token[Access + Refresh]
+    Client -->|/api/*| Authorize[Authorize MW]
+    Authorize --> RBAC[RBAC Service]
+    RBAC --> Role[Role Hierarchy]
+    Role --> Permission[Permission Check]
+    API --> Audit[(Audit Log)]
+```
+
+## Test Results
+
+![Test results](docs/test_results.png)
+
+**34 passing**, **67 failing**, **0 skipped** (total 101, framework: Jest)
+
+## References & Further Reading
+
+- Jones, M. & Hardt, D. (2012). *The OAuth 2.0 Authorization Framework: Bearer Token Usage.* RFC 6750. [↗](https://datatracker.ietf.org/doc/html/rfc6750)
+- Sandhu, R. et al. (1996). *Role-Based Access Control Models.* IEEE Computer 29(2). [↗](https://ieeexplore.ieee.org/document/485845)
+- Provos, N. & Mazières, D. (1999). *A Future-Adaptable Password Scheme* (bcrypt). USENIX. [↗](https://www.usenix.org/legacy/events/usenix99/provos/provos.pdf)
+
+## Author
+
+**Manikanta Reddy Mandadhi** — Senior Data Scientist (RAG / Agentic AI)
+
+GitHub: [@Mani9006](https://github.com/Mani9006/auth-microservice) · LinkedIn: [reddy1999](https://www.linkedin.com/in/reddy1999) · Portfolio: [manikantabio.com](https://www.manikantabio.com)
+
+<!-- showcase:end -->
