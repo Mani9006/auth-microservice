@@ -448,6 +448,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <!-- showcase:start -->
 
+## Research Report
+
+**Authentication and Role-Based Access Control with JWT and Audit Logging**
+
+_An evaluation of bcrypt, JWT scopes, RBAC inheritance, and brute-force defense_
+
+A self-contained research-grade report (Abstract, Introduction, Research Problem, Research Questions, Literature Review, Research Method, Data Description, Analysis, Discussion, Conclusion, Future Work, References) is published with this repository.
+
+[Read the full report (PDF)](docs/research_report.pdf)
+
+**Keywords:** authentication, JWT, bcrypt, RBAC, rate limiting, audit
+
+![Research metrics](docs/research_metrics.png)
+
 ## Architecture
 
 ```mermaid
